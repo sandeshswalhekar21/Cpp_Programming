@@ -1,0 +1,78 @@
+#include<iostream>
+using namespace std;
+#pragma pack(1)
+class ArrayX               
+{
+   private:
+       int *Arr;
+       int iSize;
+       
+   public:
+      //parametrised constructor with default argument     (it act as both default and parame..)
+       ArrayX(int x=5) 
+       {
+         
+         iSize=x;                 
+         Arr=new int[iSize];     
+       }
+
+       ~ArrayX()
+       {
+         
+         delete []Arr;           
+       }
+       void Accept()
+       {
+        int iCnt = 0;
+          cout<<"Enter the elements:\n";
+
+          for(iCnt=0;iCnt<iSize;iCnt++)
+          {
+            cin>>Arr[iCnt];
+
+          }
+       }
+
+        void Display()
+       {
+        int iCnt = 0;
+          cout<<" elements of the array are:\n";
+
+          for(iCnt=0;iCnt<iSize;iCnt++)
+          {
+            cout<<Arr[iCnt]<<endl;
+
+          }
+       }
+       int Summation()
+       {
+        int iCnt=0,iSum=0;
+        for(iCnt=0;iCnt<iSize;iCnt++)
+        {
+          iSum=iSum+Arr[iCnt];
+        }
+        return iSum;
+       }
+};
+
+  int main()
+{
+  
+  ArrayX *aobj = NULL;   
+  int iLength=0;
+  int iRet=0;
+  cout<<"Enter number of elements:\n";
+  cin>>iLength;
+
+  aobj=new ArrayX(iLength);
+
+  aobj->Accept();
+  aobj->Display();
+  iRet=aobj->Summation();
+  cout<<"Addition is :"<<iRet<<"\n";
+
+  delete aobj;
+ 
+return 0;
+
+}
